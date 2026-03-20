@@ -4,7 +4,7 @@
 
 ```
 conda env create -f environment.yml
-conda activate train_ipadapter
+conda activate train_lora_sd1.5
 ```
 
 ## 2. Create caption for dataset

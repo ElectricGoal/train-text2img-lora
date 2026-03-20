@@ -1,4 +1,4 @@
-name: train_ipadapter
+name: train_lora_sd1.5
 channels:
   - conda-forge
 dependencies:
