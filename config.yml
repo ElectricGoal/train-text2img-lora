@@ -1,0 +1,65 @@
+# ── Model ────────────────────────────────────────────────────────────────────
+pretrained_model_name_or_path: runwayml/stable-diffusion-inpainting
+revision: null
+variant: null
+
+# ── Dataset ──────────────────────────────────────────────────────────────────
+data_root: /home/toxu/work/dataset/grow_hair
+json_file_path: /home/toxu/work/dataset/grow_hair/train.jsonl
+prompt: "natural hair, realistic hair strands, photorealistic, high quality, 8k"
+resolution: 512
+max_train_samples: null
+
+# ── Training ─────────────────────────────────────────────────────────────────
+seed: null
+output_dir: sd-model-finetuned-lora
+train_batch_size: 4
+num_train_epochs: 50
+max_train_steps: null
+gradient_accumulation_steps: 1
+gradient_checkpointing: false
+learning_rate: 1.0e-4
+scale_lr: false
+lr_scheduler: constant        # linear | cosine | cosine_with_restarts | polynomial | constant | constant_with_warmup
+lr_warmup_steps: 500
+noise_offset: 0.0
+snr_gamma: null               # recommended: 5.0
+prediction_type: null          # epsilon | v_prediction | null (use scheduler default)
+max_grad_norm: 1.0
+
+# ── Optimizer ────────────────────────────────────────────────────────────────
+use_8bit_adam: false
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_weight_decay: 1.0e-2
+adam_epsilon: 1.0e-8
+
+# ── LoRA ─────────────────────────────────────────────────────────────────────
+rank: 16
+
+# ── Infrastructure ───────────────────────────────────────────────────────────
+mixed_precision: fp16          # no | fp16 | bf16
+allow_tf32: false
+enable_xformers_memory_efficient_attention: false
+dataloader_num_workers: 0
+report_to: wandb               # tensorboard | wandb | comet_ml | all
+logging_dir: logs
+local_rank: -1
+wandb_project: grow-hair-lora
+wandb_run_name: null           # auto-generated if null
+wandb_api_key: null            # set here or via WANDB_API_KEY env var
+
+# ── Checkpointing ───────────────────────────────────────────────────────────
+checkpointing_steps: 500
+checkpoints_total_limit: null
+resume_from_checkpoint: null   # path or "latest"
+
+# ── Validation ───────────────────────────────────────────────────────────────
+num_validation_images: 2
+validation_epochs: 1
+
+# ── Hub ──────────────────────────────────────────────────────────────────────
+push_to_hub: false
+hub_token: null
+hub_model_id: null
+cache_dir: null
